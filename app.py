@@ -18,16 +18,14 @@ from flask import Flask, request, jsonify, render_template, abort
 from werkzeug.middleware.proxy_fix import ProxyFix
 from ortools.constraint_solver import routing_enums_pb2, pywrapcp
 
-# -------------------------------------------------------------------
-# Config / Keys (loaded from environment variables on Render)
-# -------------------------------------------------------------------
+# These names MUST match the Render Environment Variables.
+# Do NOT put your actual API key here.
 
-# These names MUST match the Environment Variables on Render.
-# Do NOT put the actual key in this file.
 GOOGLE_SERVER_KEY = os.getenv("AIzaSyBHmixdoUdzpstrt3tGXpsIqGqWHltDRCk", "")
 GOOGLE_BROWSER_KEY = os.getenv("AIzaSyBHmixdoUdzpstrt3tGXpsIqGqWHltDRCk", GOOGLE_SERVER_KEY)
 
 PORT = int(os.getenv("PORT", "5000"))
+
 
 
 
@@ -786,6 +784,7 @@ def optimize():
 # -------------------------------------------------------------------
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=PORT, debug=False)
+
 
 
 
