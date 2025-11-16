@@ -11,8 +11,9 @@ function goToPage(page) {
 // Simple logout for prototype
 function logout() {
   localStorage.removeItem("isLoggedIn");
-  window.location.href = "index.html";
+  window.location.href = "/login";
 }
+
 
 // ===========================================================
 // LOGIN PAGE
@@ -354,3 +355,4 @@ document.addEventListener("DOMContentLoaded", function () {
   initStudentsPage();
   initCalculatorPage();
 });
+
