@@ -21,8 +21,8 @@ from ortools.constraint_solver import routing_enums_pb2, pywrapcp
 # -------------------------------------------------------------------
 # Config / Keys
 # -------------------------------------------------------------------
-GOOGLE_SERVER_KEY  = os.getenv("GOOGLE_MAPS_SERVER_KEY")
-GOOGLE_BROWSER_KEY = os.getenv("GOOGLE_MAPS_JS_KEY", GOOGLE_SERVER_KEY)
+GOOGLE_SERVER_KEY  = os.getenv("AIzaSyBHmixdoUdzpstrt3tGXpsIqGqWHltDRCk")
+GOOGLE_BROWSER_KEY = os.getenv("AIzaSyBHmixdoUdzpstrt3tGXpsIqGqWHltDRCk", GOOGLE_SERVER_KEY)
 if not GOOGLE_SERVER_KEY:
     raise RuntimeError("GOOGLE_MAPS_SERVER_KEY is required")
 
@@ -783,3 +783,4 @@ def optimize():
 # -------------------------------------------------------------------
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=PORT, debug=False)
+
