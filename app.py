@@ -567,6 +567,10 @@ def resolve_endpoint():
     lat, lng = coords
     return jsonify({"lat": lat, "lng": lng})
 
+@app.route("/login")
+def login():
+    return render_template("index.html")
+
 @app.get("/dashboard.html")
 def dashboard():
     return render_template("dashboard.html")
@@ -784,6 +788,7 @@ def optimize():
 # -------------------------------------------------------------------
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=PORT, debug=False)
+
 
 
 
