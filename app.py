@@ -19,15 +19,20 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 from ortools.constraint_solver import routing_enums_pb2, pywrapcp
 
 # -------------------------------------------------------------------
-# Config / Keys
+# Config / Keys (use environment variables)
 # -------------------------------------------------------------------
+
+# These names must match what you set on Render:
+# GOOGLE_MAPS_SERVER_KEY and GOOGLE_MAPS_JS_KEY
 GOOGLE_SERVER_KEY = os.getenv("AIzaSyBHmixdoUdzpstrt3tGXpsIqGqWHltDRCk")
-GOOGLE_BROWSER_KEY = os.getenv("AIzaSyBHmixdoUdzpstrt3tGXpsIqGqWHltDRCk")
+GOOGLE_BROWSER_KEY = os.getenv("AIzaSyBHmixdoUdzpstrt3tGXpsIqGqWHltDRCk", GOOGLE_SERVER_KEY)
 
 if not GOOGLE_SERVER_KEY:
+    # Fail fast if the server key is missing
     raise RuntimeError("GOOGLE_MAPS_SERVER_KEY is required")
 
 PORT = int(os.getenv("PORT", "5000"))
+
 
 # Tunables
 DM_CHUNK = 25                       # DistanceMatrix origins/destinations chunk (up to 100 elements per call)
@@ -784,5 +789,6 @@ def optimize():
 # -------------------------------------------------------------------
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=PORT, debug=False)
+
 
 
